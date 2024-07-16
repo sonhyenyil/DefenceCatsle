@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class towerStat : MonoBehaviour
 {
+    public static towerStat Instance;
 
     [Header("타워의 초기 위치값")]
     [SerializeField] Transform towerDefaultTrs;
@@ -68,6 +69,14 @@ public class towerStat : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
         curTowerHp = maxTowerHp;
         resetStat();
     }
@@ -104,7 +113,7 @@ public class towerStat : MonoBehaviour
     {
         switch (mpUpgradelevel)
         {
-            case 0:
+            case 0: 
                 maxTowerMp = 150;
                 break;
             case 1:
@@ -191,7 +200,7 @@ public class towerStat : MonoBehaviour
         if (curTowerMp < unitUpgradeCost[unitUpgradelevel] || upChecker[1] == true)
         {
             unitUpdisable.gameObject.SetActive(true);
-            unitUpImage.sprite = unitUpImageList[4];
+            unitUpImage.sprite = unitUpImageList[unitUpgradelevel];
             if (upChecker[1] == true)
             {
                 unitUpImage.fillAmount = upGradeTimer[1] / unitUpgradeTime[unitUpgradelevel];
@@ -219,7 +228,21 @@ public class towerStat : MonoBehaviour
         {
             enemyCurseUpdisable.color = new Color(1, 1, 1, 0.01f);
             enemyCurseUpdisable.gameObject.SetActive(true);
+            return;
         }
+        if (curTowerMp < enemyCruseUpgradeCost[enemyCurselevel] || upChecker[2])
+        {
+            enemyCurseUpdisable.gameObject.SetActive(true);
+            if (upChecker[2] == true)
+            {
+                enemyCurseImage.fillAmount = upGradeTimer[2] / enemyCurseUpgradeTime[enemyCurselevel];
+            }
+        }
+        else if (curTowerMp >= enemyCruseUpgradeCost[enemyCurselevel] && upChecker[2] == false)
+        {
+            enemyCurseUpdisable.gameObject.SetActive(false);
+        }
+
     }
 
     public void enemyCurseUpgeadeEvent() 
@@ -322,13 +345,17 @@ public class towerStat : MonoBehaviour
         {
             enemyCurseUpText.SetText("max");
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TowerHit(200);
+        }
     }
 
     /// <summary>
     /// 타워가 피격시에 데미지를 받기위한 공식
     /// </summary>
     /// <param name="_damage"></param>
-    private void TowerHit(float _damage)
+    public void TowerHit(float _damage)
     {
         curTowerHp -= _damage;
         if (curTowerHp <= 0)
@@ -350,5 +377,4 @@ public class towerStat : MonoBehaviour
         }
 
     }
-
 }
