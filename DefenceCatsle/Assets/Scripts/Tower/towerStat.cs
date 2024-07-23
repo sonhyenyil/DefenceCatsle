@@ -77,6 +77,7 @@ public class towerStat : MonoBehaviour
         {
             Destroy(Instance);
         }
+
         curTowerHp = maxTowerHp;
         resetStat();
     }
@@ -345,10 +346,6 @@ public class towerStat : MonoBehaviour
         {
             enemyCurseUpText.SetText("max");
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TowerHit(200);
-        }
     }
 
     /// <summary>
@@ -358,6 +355,7 @@ public class towerStat : MonoBehaviour
     public void TowerHit(float _damage)
     {
         curTowerHp -= _damage;
+        GameManager.Instance.createDamagePrint((int)_damage, towerObj.transform.position, false);
         if (curTowerHp <= 0)
         {
             TowerBreak();
@@ -367,14 +365,20 @@ public class towerStat : MonoBehaviour
     /// <summary>
     /// 타워 파괴시에 실행되는 코드
     /// </summary>
-    private void TowerBreak()
+    public bool TowerBreak()
     {
         if (curTowerHp <= 0)
         {
             curTowerHp = 0;
             isDefeat = true;
             EndGame.Instance.gameResult(isDefeat, false);
+            return true;
         }
+        return false;
+    }
 
+    public int dubuffEnemy() 
+    {
+        return enemyCurselevel;
     }
 }

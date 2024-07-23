@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
@@ -94,5 +95,10 @@ public class EndGame : MonoBehaviour
             curTimeStringsec = curTimsec.ToString("f1");
             curTimeStringmin = curTimemin.ToString("D2");
         }
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

@@ -1,28 +1,22 @@
 fileFormatVersion: 2
-guid: bfeede70efd14484683f5956b4f1194b
+guid: 13a670e20d88e1d489acb123661a5046
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7078261816480267791
-    second: Sprite Sheet - Blue Idle_0
+      213: -7484195833629091316
+    second: Sprite Sheet - Blue Jump to Fall_0
   - first:
-      213: -3938910030919452613
-    second: Sprite Sheet - Blue Idle_1
+      213: 3922477038715866601
+    second: Sprite Sheet - Blue Jump to Fall_1
   - first:
-      213: -99518741711876278
-    second: Sprite Sheet - Blue Idle_2
+      213: -1559858571687980271
+    second: Sprite Sheet - Blue Jump to Fall_2
   - first:
-      213: 2186122089364987773
-    second: Sprite Sheet - Blue Idle_3
+      213: 1909360066693769652
+    second: Sprite Sheet - Blue Jump to Fall_3
   - first:
-      213: -8839626087033448230
-    second: Sprite Sheet - Blue Idle_4
-  - first:
-      213: 8474644945731991183
-    second: Sprite Sheet - Blue Idle_5
-  - first:
-      213: -3195334159281410377
-    second: Sprite Sheet - Blue Idle_6
+      213: -3951901653374556557
+    second: Sprite Sheet - Blue Jump to Fall_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -131,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_0
+      name: Sprite Sheet - Blue Jump to Fall_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 0
-        width: 36
-        height: 22
+        x: 31
+        y: 2
+        width: 34
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f18b715166f4cd90800000000000000
-      internalID: -7078261816480267791
+      spriteID: c0a5413da8bc22890800000000000000
+      internalID: -7484195833629091316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_1
+      name: Sprite Sheet - Blue Jump to Fall_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 0
-        width: 36
-        height: 22
+        x: 124
+        y: 5
+        width: 40
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b38b2d4323e2659c0800000000000000
-      internalID: -3938910030919452613
+      spriteID: 9ed0944a5107f6630800000000000000
+      internalID: 3922477038715866601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_2
+      name: Sprite Sheet - Blue Jump to Fall_2
       rect:
         serializedVersion: 2
-        x: 222
-        y: 0
-        width: 36
-        height: 22
+        x: 219
+        y: 9
+        width: 41
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4f05cf4b307e9ef0800000000000000
-      internalID: -99518741711876278
+      spriteID: 11390beb4e44a5ae0800000000000000
+      internalID: -1559858571687980271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_3
+      name: Sprite Sheet - Blue Jump to Fall_3
       rect:
         serializedVersion: 2
-        x: 318
-        y: 0
-        width: 36
-        height: 22
+        x: 316
+        y: 7
+        width: 40
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7f1c3c257aa65e10800000000000000
-      internalID: 2186122089364987773
+      spriteID: 4b9299b4dd86f7a10800000000000000
+      internalID: 1909360066693769652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_4
+      name: Sprite Sheet - Blue Jump to Fall_4
       rect:
         serializedVersion: 2
-        x: 414
-        y: 0
-        width: 36
-        height: 21
+        x: 415
+        y: 4
+        width: 34
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,50 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad8581f78e6535580800000000000000
-      internalID: -8839626087033448230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_5
-      rect:
-        serializedVersion: 2
-        x: 510
-        y: 0
-        width: 36
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f863ae37dacfb9570800000000000000
-      internalID: 8474644945731991183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_6
-      rect:
-        serializedVersion: 2
-        x: 606
-        y: 0
-        width: 36
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7be2c510384e7a3d0800000000000000
-      internalID: -3195334159281410377
+      spriteID: 376a45362660829c0800000000000000
+      internalID: -3951901653374556557
       vertices: []
       indices: 
       edges: []
@@ -288,13 +240,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite Sheet - Blue Idle_0: -7078261816480267791
-      Sprite Sheet - Blue Idle_1: -3938910030919452613
-      Sprite Sheet - Blue Idle_2: -99518741711876278
-      Sprite Sheet - Blue Idle_3: 2186122089364987773
-      Sprite Sheet - Blue Idle_4: -8839626087033448230
-      Sprite Sheet - Blue Idle_5: 8474644945731991183
-      Sprite Sheet - Blue Idle_6: -3195334159281410377
+      Sprite Sheet - Blue Jump to Fall_0: -7484195833629091316
+      Sprite Sheet - Blue Jump to Fall_1: 3922477038715866601
+      Sprite Sheet - Blue Jump to Fall_2: -1559858571687980271
+      Sprite Sheet - Blue Jump to Fall_3: 1909360066693769652
+      Sprite Sheet - Blue Jump to Fall_4: -3951901653374556557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

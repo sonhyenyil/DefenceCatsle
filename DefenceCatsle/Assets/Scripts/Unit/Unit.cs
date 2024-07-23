@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+
     protected float curUnitHp = 0;
-    // Start is called before the first frame update
+    protected float curUnitAttack = 0;
+    protected float curUnitDefence = 0;
     void Start()
     {
         

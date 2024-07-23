@@ -1,23 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] float enemyDamage = 200.0f;
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void enemyUnitAttack(float _enemyDamage)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            enemyAttack(enemyDamage);
-        }
+
     }
 
-    private void enemyAttack(float _enemyDamge)
+    public void enemyTowerAttack(float _enemyDamage)
     {
-
-        towerStat.Instance.TowerHit(_enemyDamge);
+        towerStat.Instance.TowerHit(_enemyDamage);
     }
 
 }
