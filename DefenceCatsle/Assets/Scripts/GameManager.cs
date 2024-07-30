@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] GameObject damagePrefab;
+    [SerializeField] Transform damageCreateParentObj;
     private void Awake()
     {
         if (Instance == null)
@@ -18,14 +19,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-
-    }
-
     public void createDamagePrint(int _damage, Vector2 _damagetrs, bool _isEnemy) 
     {
-        GameObject go = Instantiate(damagePrefab, _damagetrs, Quaternion.identity);
+        GameObject go = Instantiate(damagePrefab, _damagetrs, Quaternion.identity, damageCreateParentObj);
         DamagePrint dmgPrint = go.GetComponent<DamagePrint>();
         dmgPrint.printDamage(_damage.ToString(), true, _isEnemy);
     }   

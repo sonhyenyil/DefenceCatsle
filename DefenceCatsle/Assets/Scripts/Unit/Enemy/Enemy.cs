@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,9 @@ public class Enemy : MonoBehaviour
 
     float enemyCurHp = 0.0f;
     bool isAtkCool = false;
-    bool isfirstAttack = true;
     float enemyAtkCoolTimer = 0.0f;
+
+    int playerUnitCheckCount = 0;//인지범위 내에 플레이어 유닛이 얼마나 남았는지 체크하기위한 변수
 
     EnemyAttack enemyAtk;
     Animator enemyAnim;
@@ -25,9 +27,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        isAttack = false;
-        enemyAtkCoolTimer = enemyAtkCool;
-        enemyCurHp = enemyMaxHp;
+        setDefaultSetting();
     }
 
     private void Start()
@@ -42,11 +42,14 @@ public class Enemy : MonoBehaviour
     {
         enemyMove(enemySpeed);
         checkTimer();
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            enemyHit(30);
-        }
     }
+    private void setDefaultSetting()
+    {
+        isAttack = false;
+        enemyAtkCoolTimer = enemyAtkCool;
+        enemyCurHp = enemyMaxHp;
+    }
+
 
     private void enemyMove(float _speed) //적이 공격상태인지 아닌지를 판별해서 이동을 하는 함수
     {
@@ -66,6 +69,7 @@ public class Enemy : MonoBehaviour
         if ((_hitBox == EnemyHitBox.enemyHitBoxType.checkPlayer && _collision.tag == "Player") ||
             (_hitBox == EnemyHitBox.enemyHitBoxType.checkPlayer && _collision.tag == "PlayerTower"))
         {
+            playerUnitCheckCount++;
             isAttack = true;
             enemyAnim.SetBool("isAttack", true);
         }
@@ -74,25 +78,25 @@ public class Enemy : MonoBehaviour
         {
             enemyAtk.enemyUnitAttack(enemyDamage);
             isAtkCool = true;
-            isfirstAttack = false;
         }
         else if (_hitBox == EnemyHitBox.enemyHitBoxType.attack && _collision.tag == "PlayerTower")
         {
             enemyAtk.enemyTowerAttack(enemyDamage);
             isAtkCool = true;
-            isfirstAttack = false;
         }
-
     }
 
     public void enemyOnTirrgerExit(EnemyHitBox.enemyHitBoxType _hitBox, Collider2D _collision)
     {
-        if ((_hitBox == EnemyHitBox.enemyHitBoxType.checkPlayer && _collision.CompareTag("Player")) ||
-            (_hitBox == EnemyHitBox.enemyHitBoxType.checkPlayer && _collision.CompareTag("PlayerTower")))
+        if ((_hitBox == EnemyHitBox.enemyHitBoxType.checkPlayer && _collision.tag == "Player") ||
+            (_hitBox == EnemyHitBox.enemyHitBoxType.checkPlayer && _collision.tag == "PlayerTower"))
         {
-            isAttack = false;
-            enemyAnim.SetBool("isAttack", false);
-            isfirstAttack = true;
+            playerUnitCheckCount--;
+            if (playerUnitCheckCount <= 0)
+            {
+                isAttack = false;
+                enemyAnim.SetBool("isAttack", false);
+            }
         }
     }
 

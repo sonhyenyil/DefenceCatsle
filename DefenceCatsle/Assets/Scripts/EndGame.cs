@@ -96,9 +96,4 @@ public class EndGame : MonoBehaviour
             curTimeStringmin = curTimemin.ToString("D2");
         }
     }
-
-    public void restartGame()
-    {
-        SceneManager.LoadScene(1);
-    }
 }

@@ -66,6 +66,7 @@ public class towerStat : MonoBehaviour
     [Header("타워 파괴시에 필요한 변수들")]
     [SerializeField] GameObject towerObj;
     bool isDefeat = false;
+    bool isClear = true;
 
     private void Awake()
     {
@@ -92,6 +93,7 @@ public class towerStat : MonoBehaviour
         regenMp();
         towerUiSet();
         upgradeUpdate();
+        forceClear();
     }
 
     /// <summary>
@@ -132,6 +134,7 @@ public class towerStat : MonoBehaviour
     private void regenMp()
     {
         if (isDefeat == true) return;
+        if (isClear == true) return;
         if (curTowerMp < maxTowerMp)
         {
             regenMpCal();
@@ -354,7 +357,7 @@ public class towerStat : MonoBehaviour
     /// <param name="_damage"></param>
     public void TowerHit(float _damage)
     {
-        curTowerHp -= _damage;
+        curTowerHp -= (_damage);
         GameManager.Instance.createDamagePrint((int)_damage, towerObj.transform.position, false);
         if (curTowerHp <= 0)
         {
@@ -380,5 +383,43 @@ public class towerStat : MonoBehaviour
     public int dubuffEnemy() 
     {
         return enemyCurselevel;
+    }
+
+    public float returnMp() 
+    {
+        return curTowerMp;
+    }
+    public int unitUpgradeLevel() 
+    {
+        return unitUpgradelevel;
+    }
+
+    public void useUnitCost(float _unitCost) 
+    {
+        curTowerMp -= _unitCost;
+    }
+
+    public void checkClear(bool _result) 
+    {
+        if (_result == false)
+        {
+            return;
+        }
+        else if (_result == true) 
+        {
+            isClear = true;
+        }
+    }
+
+    /// <summary>
+    /// 강제 클리어를 위한 함수(나중에 보스가 추가되면 지울것)
+    /// </summary>
+    private void forceClear()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            EndGame.Instance.gameResult(true, true);
+            isClear = true;
+        }
     }
 }

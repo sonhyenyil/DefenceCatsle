@@ -11,7 +11,7 @@ public class DamagePrint : MonoBehaviour
     [SerializeField, Tooltip("데미지 올라가는 속도")] float upSpeed;
 
     TMP_Text text;
-
+    Color textColor;
     bool setTimer = false;
     float printTimer = 0.0f;
 
@@ -43,6 +43,9 @@ public class DamagePrint : MonoBehaviour
     {
         if (setTimer == true)
         {
+            textColor = text.color;
+            textColor.a -= (Time.deltaTime / printTime);
+            text.color = textColor;
             printTimer += Time.deltaTime;
 
             text.transform.position = transform.transform.position + new Vector3(0, 0 + (Time.deltaTime / printTime /2), 0);

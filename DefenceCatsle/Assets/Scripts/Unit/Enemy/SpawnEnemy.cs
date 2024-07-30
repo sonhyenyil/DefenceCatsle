@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,17 +10,18 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] Transform enemyRespawnTrs;
     [SerializeField] GameObject[] enemySpawnList;
 
-    [Header("몬스터 소환 패턴을 위해서 필요한 변수들")]
-    [SerializeField, Tooltip("몬스터의 스폰시간 초기값 리스트번호 0:기본슬라임, 1:투척슬라임, 2:방패해골, 3:해골마법사, 4:보스")]
-    float[] spawnTime;
+    [Header("몬스터 소환 패턴을 위해서 필요한 변수들 0.1초 미만 사용불가")]
+    [SerializeField, Tooltip("몬스터의 스폰시간 초기값 리스트번호 " +
+        "0:기본슬라임, 1:투척슬라임, 2:방패해골, 3:해골마법사, 4:보스")] float[] spawnTime;
+    [SerializeField, Tooltip("해당시간마다 적 유닛의 생산속도 증가")] float valanceTime = 30.0f;
     float[] spawnTimer; //몬스터들의 스폰시간을 체크하기위한 변수 0:기본슬라임, 1:투척슬라임, 2:방패해골, 3:해골마법사, 4:보스
     private int spawnCode = 0;
-    float valanceTime = 15.0f;
     float valanceTimer = 0.0f;
     int valance = 0;
     int curseCheck = 0;
     float[] cursedelayTime = new float[3];
     float[] cursedebuffval = new float[3];
+    bool isClear = false;
 
     enum spawnList
     {
@@ -49,6 +51,10 @@ public class SpawnEnemy : MonoBehaviour
     void Update()
     {
         activeTimer();
+        if (Input.GetKeyDown(KeyCode.O))
+        { 
+            isClear = true;
+        }
     }
 
     /// <summary>
@@ -95,31 +101,36 @@ public class SpawnEnemy : MonoBehaviour
     /// </summary>
     private void activeTimer()
     {
-        for (int iNum = 0; iNum < spawnTimer.Length; iNum++)
+        if (isClear == false)
         {
-            spawnTimer[iNum] += Time.deltaTime;
-            if (spawnTimer[iNum] >= spawnTime[iNum])
+            for (int iNum = 0; iNum < spawnTimer.Length; iNum++)
             {
-                EnemySpawnPattern();
-                spawnTimer[iNum] = 0.0f;
-                checkType((spawnList)iNum);
-                spawnTime[iNum] = spawnTime[iNum] - (valance * 0.1f);
-            }
-        }
-        //if (boss.bossSpawn() == true)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        valanceTimer += Time.deltaTime;
-        if (valanceTimer >= valanceTime)
-        {
-            valanceTimer = 0.0f;
-            valance++;
-        }
-        //}
+                spawnTimer[iNum] += Time.deltaTime;
+                if (spawnTimer[iNum] >= spawnTime[iNum])
+                {
+                    EnemySpawnPattern();
+                    spawnTimer[iNum] = 0.0f;
+                    checkType((spawnList)iNum);
+                    if (spawnTime[iNum] <= 0)
+                    {
+                        spawnTime[iNum] = 0.1f;
+                    }
+                }
 
+                if (valanceTimer >= valanceTime)
+                {
+                    valance++;
+                    spawnTime[iNum] -= (valance * 0.1f);
+                    valanceTimer = 0.0f;
+                    valance = 0;
+                }
+            }
+            valanceTimer += Time.deltaTime;
+        }
+        else
+        {
+            return;
+        }
     }
 
     /// <summary>

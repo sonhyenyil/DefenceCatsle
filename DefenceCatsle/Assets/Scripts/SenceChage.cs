@@ -12,11 +12,20 @@ public class SenceChage : MonoBehaviour
     [SerializeField] Button overmainButton;
     [SerializeField] Button overRestartButton;
 
-    private void Update()
+    private void Start()
     {
-        clearMainButton.onClick.AddListener(scenceChange);
+        clearMainButton.onClick.AddListener(mainMenu);
+        clearRestartButton.onClick.AddListener(gameRestart);
+        overmainButton.onClick.AddListener(mainMenu);
+        overRestartButton.onClick.AddListener(gameRestart);
     }
-    private void scenceChange()
+
+    private void gameRestart() 
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private void mainMenu() 
     {
         SceneManager.LoadScene(0);
     }
