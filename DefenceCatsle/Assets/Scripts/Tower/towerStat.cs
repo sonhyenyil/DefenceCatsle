@@ -66,7 +66,7 @@ public class towerStat : MonoBehaviour
     [Header("타워 파괴시에 필요한 변수들")]
     [SerializeField] GameObject towerObj;
     bool isDefeat = false;
-    bool isClear = true;
+    bool isClear = false;
 
     private void Awake()
     {

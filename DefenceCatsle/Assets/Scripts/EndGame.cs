@@ -80,6 +80,11 @@ public class EndGame : MonoBehaviour
             curTime += Time.deltaTime;
             curTimeText.SetText($"{curTimeStringmin} : {curTimeStringsec}");
         }
+
+        if (curTime >= 180)
+        {
+            gameResult(true, true);
+        }
     }
 
     private void calTime() 

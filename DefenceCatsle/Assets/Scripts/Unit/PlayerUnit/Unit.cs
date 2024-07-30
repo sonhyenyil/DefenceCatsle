@@ -38,6 +38,11 @@ public class Unit : MonoBehaviour
         unitAnim = GetComponent<Animator>();
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);    
+    }
+
     void Start()
     {
         towerSt = towerStat.Instance;
@@ -70,7 +75,7 @@ public class Unit : MonoBehaviour
             return;
         }
     }
-
+    
     public void unitOnTriggerEnter(UnitHitBox.playerUnitHitBoxType _hitBoxType, Collider2D _collsion)
     {
         enemy = _collsion.GetComponent<Enemy>();
